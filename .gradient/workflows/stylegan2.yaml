@@ -8,14 +8,15 @@ jobs:
     resources:
       instance-type: C4
     outputs:
-     stylegan2:
+     nac:
         type: volume
     uses: git-checkout@v1
     with:
-      # url: https://github.com/gradient-ai/stylegan2.git
+      # url: https://github.com/SeabassAI/nac-workflow.git
       url: context.event.github.url
       ref: context.event.github.ref
-  StyleGan2:
+
+  NeuralAudioCodec:
     resources:
       instance-type: P4000
     needs:
@@ -39,4 +40,4 @@ jobs:
           --seeds=6600-6605 \
           --truncation-psi=0.5 \
           --result-dir=/outputs/generatedFaces
-      image: tensorflow/tensorflow:1.14.0-gpu-py3
+      image: sebby1234/nac:workflow
